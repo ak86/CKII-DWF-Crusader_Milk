@@ -35,8 +35,8 @@ decisions = {
 		potential = {
 			trait = hucow
 			is_female = yes
-			age = 16
 			has_character_flag = dwcm_hucow_variables_initialized
+			age = 16
 		}
 
 		allow = {
@@ -132,6 +132,49 @@ decisions = {
 			clr_character_flag = dwcm_lactacid_stored
 			set_character_flag = dwcm_lactacid_tested_by_decision
 			narrative_event = { id = DWCMHucow.150 }
+		}
+	}
+}
+
+targetted_decisions = {
+
+	# Self milking
+	dwcm_hucow_milking = {
+		filter = self
+		ai_check_interval = 6
+
+		potential = {
+			prisoner = no
+			trait = hucow
+			is_female = yes
+			has_character_flag = dwcm_hucow_variables_initialized
+			age = 16
+		}
+
+		allow = {
+			prisoner = no
+			is_incapable = no
+			NOT = { has_character_modifier = recently_milked }
+			check_variable >= { which = dwcm_milk_quantity_CURRENT value = 0.5 }
+		}
+
+		effect = {
+			character_event = { id = DWCMMilk.040 }
+		}
+
+		ai_will_do = {
+			factor = 0.05
+			modifier = { # Those who have engorged breasts are far more likely to milk themselve
+				factor = 5
+				trait = engorged_breasts
+			}
+			modifier = { # Those religious or chaste may be reluctant to milk themselve
+				factor = 0.5
+				trait = chaste
+				trait = celibate
+				trait = nun
+				trait = zealous
+			}
 		}
 	}
 }
