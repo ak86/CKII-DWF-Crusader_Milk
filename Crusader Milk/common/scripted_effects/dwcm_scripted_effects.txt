@@ -172,6 +172,66 @@ dcwm_milking_after_effect = { # Don't call this scripted effect directly, use th
 		}
 		remove_trait = engorged_breasts	
 	}
+	if = {
+		limit = {
+			trait = stressed
+			learning <= 5
+		}
+		remove_trait = stressed
+	}
+	if = {
+		limit = {
+			trait = depressed
+			learning <= 5
+		}
+		remove_trait = depressed
+	}
+	if = {
+		limit = {
+			trait = stressed
+			learning > 5
+			learning < 10
+		}
+		random = {
+			chance = 10
+			additive_modifier = {
+				value = 40 # bumps it up to 50% (change to your liking)
+				has_character_flag = milked_full
+			}
+			additive_modifier = {
+				value = 25 # bumps it up to 35% (change to your liking)
+				has_character_flag = milked_half
+			}
+			additive_modifier = {
+				value = 10 # bumps it up to 20% (change to your liking)
+				has_character_flag = milked_third
+			}
+			remove_trait = stressed
+		}
+	}
+	if = {
+		limit = {
+			trait = depressed
+			learning > 5
+			learning < 10
+		}
+		random = {
+			chance = 10
+			additive_modifier = {
+				value = 40 # bumps it up to 50% (change to your liking)
+				has_character_flag = milked_full
+			}
+			additive_modifier = {
+				value = 25 # bumps it up to 35% (change to your liking)
+				has_character_flag = milked_half
+			}
+			additive_modifier = {
+				value = 10 # bumps it up to 20% (change to your liking)
+				has_character_flag = milked_third
+			}
+			remove_trait = depressed
+		}
+	}
 	add_character_modifier = {
 		modifier = recently_milked
 		duration = 180
@@ -181,23 +241,48 @@ dcwm_milking_after_effect = { # Don't call this scripted effect directly, use th
 		change_variable = { which = dwcm_tracker_time_milked value = 1 }
 		dwcm_update_divided_milk_quantities = yes
 	}
+	clr_character_flag = milked_full
+	clr_character_flag = milked_half
+	clr_character_flag = milked_third
+}
+
+dcwm_milk_all_barn_wealth_effect = { # [Modder_friendly] Milk all the milk present in the character's breasts, add gold
+	hidden_tooltip = { set_variable = { which = local_dwcm_milked_amount which = dwcm_milk_quantity_CURRENT } }
+	wealth = dwcm_milk_quantity_CURRENT
+	prestige = -15
+	subtract_variable = { which = dwcm_milk_quantity_CURRENT  which = dwcm_milk_quantity_CURRENT }
+	set_character_flag = milked_full
+	dcwm_milking_after_effect = yes
+}
+
+dcwm_milk_all_barn_effect = { # [Modder_friendly] Milk all the milk present in the character's breasts
+	hidden_tooltip = { set_variable = { which = local_tmp_milked_amount which = dwcm_milk_quantity_CURRENT } }
+	hidden_tooltip = { set_variable = { which = local_dwcm_milked_amount which = dwcm_milk_quantity_CURRENT } }
+	subtract_variable = { which = dwcm_milk_quantity_CURRENT  which = dwcm_milk_quantity_CURRENT }
+	prestige = -5
+	set_character_flag  = milked_full
+	dcwm_milking_after_effect = yes
 }
 
 dcwm_milk_all_effect = { # [Modder_friendly] Milk all the milk present in the character's breasts
+	hidden_tooltip = { set_variable = { which = local_tmp_milked_amount which = dwcm_milk_quantity_CURRENT } }
 	hidden_tooltip = { set_variable = { which = local_dwcm_milked_amount which = dwcm_milk_quantity_CURRENT } }
 	subtract_variable = { which = dwcm_milk_quantity_CURRENT  which = dwcm_milk_quantity_CURRENT }
+	set_character_flag  = milked_full
 	dcwm_milking_after_effect = yes
 }
 
 dcwm_milk_half_effect = { # [Modder_friendly] Milk half the milk present in the character's breasts
 	hidden_tooltip = { set_variable = { which = local_dwcm_milked_amount which = dwcm_milk_quantity_half } }
 	subtract_variable = { which = dwcm_milk_quantity_CURRENT  which = dwcm_milk_quantity_half }
+	set_character_flag  = milked_half
 	dcwm_milking_after_effect = yes
 }
 
 dcwm_milk_third_effect = { # [Modder_friendly] Milk a third of the milk present in the character's breasts
 	hidden_tooltip = { set_variable = { which = local_dwcm_milked_amount which = dwcm_milk_quantity_third } }
 	subtract_variable = { which = dwcm_milk_quantity_CURRENT  which = dwcm_milk_quantity_third }
+	set_character_flag  = milked_third
 	dcwm_milking_after_effect = yes
 }
 

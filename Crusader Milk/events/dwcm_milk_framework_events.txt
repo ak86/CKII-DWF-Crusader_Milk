@@ -85,10 +85,32 @@ character_event = {
 
   	option = {
 		name = "DWCMMilk040A" # I will have to do it again!
-		dcwm_milk_all_effect = yes
-		
-	  	#TODO add a chance to remove stressed or depressed trait
+		dcwm_milk_quarter_effect = yes
   	}
+  	option = {
+        trigger = {
+			OR= {
+				capital_scope = {has_building = dwcm_milkbarn_tr}
+				capital_scope = {has_building = dwcm_milkbarn_ca}
+				capital_scope = {has_building = dwcm_milkbarn_ci}
+				capital_scope = {has_building = dwcm_milkbarn_mr}
+			}
+		}
+		name = "DWCMMilk040B" # Barn - Milk fully!
+		dcwm_milk_all_barn_effect = yes
+  	}
+  	option = {
+        trigger = {
+			OR= {
+				capital_scope = {has_building = dwcm_milkbarn_tr}
+				capital_scope = {has_building = dwcm_milkbarn_ca}
+				capital_scope = {has_building = dwcm_milkbarn_ci}
+				capital_scope = {has_building = dwcm_milkbarn_mr}
+			}
+		}
+		name = "DWCMMilk040C" # Barn - Milk fully and sell!
+		dcwm_milk_all_barn_wealth_effect = yes
+	}
 }
 
 
