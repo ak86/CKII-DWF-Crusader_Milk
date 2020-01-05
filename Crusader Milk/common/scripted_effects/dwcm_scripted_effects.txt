@@ -7,7 +7,10 @@ dwcm_get_lacteria_test_subject = {
 				prisoner = no
 				is_incapable = no
 				NOT = { trait = hucow }
-				has_character_flag = dw_boobs_checked
+				OR = {
+					has_global_flag = Ala_Body_Mod
+					has_dw_bodytrait_content = yes
+				}
 			} 
 		}
 	}
@@ -22,7 +25,10 @@ dwcm_get_lacteria_test_subject = {
 					is_incapable = no
 					ai = yes #we don't want the player being pulled into these events against their will
 					NOT = { trait = hucow }
-					has_character_flag = dw_boobs_checked
+					OR = {
+						has_global_flag = Ala_Body_Mod
+						has_dw_bodytrait_content = yes
+					}
 				}
 			}
 		}
@@ -37,7 +43,10 @@ dwcm_get_lacteria_test_subject = {
 					is_incapable = no
 					ai = yes
 					NOT = { trait = hucow }
-					has_character_flag = dw_boobs_checked
+					OR = {
+						has_global_flag = Ala_Body_Mod
+						has_dw_bodytrait_content = yes
+					}
 				}
 				save_event_target_as = dwcm_lacteria_test_subject
 			}
@@ -100,13 +109,20 @@ dwcm_update_divided_milk_quantities = {
 dwcm_update_milk_capacity_raw = { # Raw Milk Capacity (quantity of milk a hucow can store in her breasts. Without other modifiers)
 	trigger_switch = {
 		on_trigger = trait
-		gigantic_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 3.5 } }
-		enormous_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 3 } }
-		huge_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 2.5 } }
-		big_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 2 } }
-		regular_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 1.5 } }
-		small_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 1 } }
-		tiny_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 0.5 } }
+		dw_gigantic_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 3.5 } }
+		dw_enormous_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 3 } }
+		dw_huge_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 2.5 } }
+		dw_big_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 2 } }
+		dw_regular_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 1.5 } }
+		dw_small_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 1 } }
+		dw_tiny_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 0.5 } }
+		ala_gigantic_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 3.5 } }
+		ala_enormous_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 3 } }
+		ala_huge_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 2.5 } }
+		ala_big_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 2 } }
+		ala_regular_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 1.5 } }
+		ala_small_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 1 } }
+		ala_tiny_tits = { set_variable = { which = dwcm_milk_capacity_raw value = 0.5 } }
 	}
 }
 
@@ -118,13 +134,20 @@ dwcm_update_milk_capacity_TOTAL = { # Actual Milk Capacity (including potential 
 dwcm_update_milk_production_rate_raw = { # Raw Milk Production Rate (Quantity of milk produced each tick (about 6 months)).
 	trigger_switch = {
 		on_trigger = trait
-		gigantic_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.5 } }
-		enormous_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.47 } }
-		huge_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.41 } }
-		big_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.34 } }
-		regular_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.26 } }
-		small_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.18 } }
-		tiny_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.12 } }
+		dw_gigantic_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.5 } }
+		dw_enormous_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.47 } }
+		dw_huge_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.41 } }
+		dw_big_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.34 } }
+		dw_regular_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.26 } }
+		dw_small_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.18 } }
+		dw_tiny_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.12 } }
+		ala_gigantic_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.5 } }
+		ala_enormous_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.47 } }
+		ala_huge_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.41 } }
+		ala_big_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.34 } }
+		ala_regular_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.26 } }
+		ala_small_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.18 } }
+		ala_tiny_tits = { set_variable = { which = dwcm_milk_production_rate_raw value = 0.12 } }
 	}
 }
 

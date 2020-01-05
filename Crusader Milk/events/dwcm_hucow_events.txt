@@ -24,7 +24,10 @@ narrative_event = {
 		NOT = { has_character_flag = dwcm_lacteria_research_started }
 		NOT = { has_character_flag = dwcm_lacteria_research_aborted }
 		NOT = { has_character_flag = dwcm_lacteria_research_completed }
-		has_valid_alchemist = yes # Calls a scripted_trigger from DW
+		OR = {
+			has_valid_alchemist = yes # Calls a scripted_trigger from DW
+			lf_has_potions = yes # LF
+		}
 		OR = { # Need to have some interest in plant studies or research in general
 			has_focus = focus_scholarship
 			trait = gardener
@@ -198,7 +201,10 @@ narrative_event = {
 				prisoner = no
 				is_incapable = no 
 				NOT = { trait = hucow }
-				has_character_flag = dw_boobs_checked
+				OR = {
+					has_global_flag = Ala_Body_Mod
+					has_dw_bodytrait_content = yes
+				}
 			} 
 		}
 		hidden_tooltip = { narrative_event = { id = DWCMHucow.180 } }
