@@ -8,13 +8,15 @@ namespace = DWCMMilk
 character_event = {
 	id = DWCMMilk.010
 	hide_window = yes
-	only_women = yes
+	only_playable = yes
 	min_age = 16
-
+	only_women = yes
+	
 	is_triggered_only = yes
 
 	trigger = {
 		trait = hucow
+		is_alive = yes
 	}
 
 	immediate = {
@@ -31,45 +33,56 @@ character_event = {
 }
 
 
-#.020 1st Yearly current_milk_quantity increase
+#.020 Yearly current_milk_quantity increase
 character_event = {
 	id = DWCMMilk.020
 	hide_window = yes
-	only_women = yes
+	only_playable = yes
 	min_age = 16
+	only_women = yes
 
 	is_triggered_only = yes
 
 	trigger = {
 		has_character_flag = dwcm_hucow_variables_initialized
-		NOT = { has_character_modifier = recently_milked }
 		trait = hucow
+		is_alive = yes
 	}
 
 	immediate = {
-		dwcm_increase_current_milk_quantity = yes
+		character_event = { id = DWCMMilk.030 days = 1 }
+		character_event = { id = DWCMMilk.030 days = 30 }
+		character_event = { id = DWCMMilk.030 days = 60 }
+		character_event = { id = DWCMMilk.030 days = 90 }
+		character_event = { id = DWCMMilk.030 days = 120 }
+		character_event = { id = DWCMMilk.030 days = 150 }
 		character_event = { id = DWCMMilk.030 days = 180 }
+		character_event = { id = DWCMMilk.030 days = 210 }
+		character_event = { id = DWCMMilk.030 days = 240 }
+		character_event = { id = DWCMMilk.030 days = 270 }
+		character_event = { id = DWCMMilk.030 days = 300 }
+		character_event = { id = DWCMMilk.030 days = 330 }
 	}
 }
 
 
-#.030 2nd Yearly current_milk_quantity increase
+#.030 Monthly current_milk_quantity increase
 character_event = {
 	id = DWCMMilk.030
 	hide_window = yes
-	only_women = yes
-	min_age = 16
 
 	is_triggered_only = yes
 
 	trigger = {
 		has_character_flag = dwcm_hucow_variables_initialized
-		NOT = { has_character_modifier = recently_milked }
 		trait = hucow
+		is_alive = yes
 	}
 
 	immediate = {
+		dwcm_update_milk_variables = yes
 		dwcm_increase_current_milk_quantity = yes
+		character_event = { id = DWCMMilk.050}
 	}
 }
 
@@ -121,18 +134,16 @@ character_event = {
   	picture = hucow_engorged_breasts
 	title = "dwcm_hucow_engorged_breasts_title"
 	only_women = yes
-	min_age = 16
 
 	is_triggered_only = yes
 
 	trigger = {
 		has_character_flag = dwcm_hucow_variables_initialized
-		NOR = { 
+		NOT = { 
 			trait = engorged_breasts
-			has_character_modifier = recently_milked
 		}
 		trait = hucow
-		check_variable = { which = dwcm_milk_quantity_CURRENT which = dwcm_milk_capacity_TOTAL }
+		check_variable = { which = dwcm_milk_quantity_CURRENT which = dwcm_milk_capacity_Engorged}
 	}
 
   	option = {

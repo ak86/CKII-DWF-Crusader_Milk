@@ -91,7 +91,8 @@ dwcm_increase_current_milk_quantity = { # [Modder_friendly] Increase milk quanti
 dwcm_update_milk_variables = { # [Modder_friendly] Update most milk related variables
 	dwcm_update_divided_milk_quantities = yes
 	dwcm_update_milk_capacity_raw = yes
-	dwcm_update_milk_capacity_TOTAL= yes
+	dwcm_update_milk_capacity_TOTAL = yes
+	dwcm_update_milk_capacity_Engorged = yes
 	dwcm_update_milk_production_rate_raw = yes
 	dwcm_update_milk_production_MULTIPLIER = yes
 	dwcm_update_milk_production_rate_TOTAL = yes
@@ -128,6 +129,12 @@ dwcm_update_milk_capacity_raw = { # Raw Milk Capacity (quantity of milk a hucow 
 
 dwcm_update_milk_capacity_TOTAL = { # Actual Milk Capacity (including potential modifiers)
 	set_variable = { which = dwcm_milk_capacity_TOTAL which = dwcm_milk_capacity_raw }
+	#TODO Add potential milk capacity bonuses
+}
+
+dwcm_update_milk_capacity_Engorged = { # Engorged Milk Capacity (including potential modifiers)
+	set_variable = { which = dwcm_milk_capacity_Engorged which = dwcm_milk_capacity_TOTAL }
+	multiply_variable = { which = dwcm_milk_capacity_Engorged value = 0.75 }
 	#TODO Add potential milk capacity bonuses
 }
 
@@ -234,7 +241,7 @@ dcwm_milking_after_effect = { # Don't call this scripted effect directly, use th
 	}
 	add_character_modifier = {
 		modifier = recently_milked
-		duration = 180
+		duration = 30
 	}
 	hidden_tooltip = {
 		change_variable = { which = dwcm_tracker_milk_produced which = local_dwcm_milked_amount }
