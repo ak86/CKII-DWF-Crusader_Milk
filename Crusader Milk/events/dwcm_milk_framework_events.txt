@@ -124,6 +124,13 @@ character_event = {
 		name = "DWCMMilk040C" # Barn - Milk fully and sell!
 		dcwm_milk_all_barn_wealth_effect = yes
 	}
+  	option = {
+        trigger = {
+			in_command = yes
+		}
+		name = "DWCMMilk040D" # Troops - Milk fully and buff troops!
+		dcwm_milk_all_troops_effect = yes
+	}
 }
 
 

@@ -3,7 +3,7 @@ hucow = {
 
 	potential = {
 		is_female = yes
-		age = 16
+		age >= 16
 	}
 	
 	health = 0.5
@@ -19,7 +19,7 @@ engorged_breasts = {
 
 	potential = {
 		is_female = yes
-		age = 16
+		age >= 16
 		trait = hucow
 	}
 	

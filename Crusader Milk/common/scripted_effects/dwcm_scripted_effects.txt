@@ -262,6 +262,17 @@ dcwm_milk_all_barn_wealth_effect = { # [Modder_friendly] Milk all the milk prese
 	dcwm_milking_after_effect = yes
 }
 
+dcwm_milk_all_troops_effect = { # [Modder_friendly] Milk all the milk present in the character's breasts, boost troops morale
+	hidden_tooltip = { set_variable = { which = local_dwcm_milked_amount which = dwcm_milk_quantity_CURRENT } }
+	subtract_variable = { which = dwcm_milk_quantity_CURRENT  which = dwcm_milk_quantity_CURRENT }
+	set_character_flag = milked_full
+	dcwm_milking_after_effect = yes
+	add_character_modifier = {
+		modifier = dcwm_morale_booster
+		duration = 30
+	}
+}
+
 dcwm_milk_all_barn_effect = { # [Modder_friendly] Milk all the milk present in the character's breasts
 	hidden_tooltip = { set_variable = { which = local_tmp_milked_amount which = dwcm_milk_quantity_CURRENT } }
 	hidden_tooltip = { set_variable = { which = local_dwcm_milked_amount which = dwcm_milk_quantity_CURRENT } }

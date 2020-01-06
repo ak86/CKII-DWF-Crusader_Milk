@@ -1,11 +1,16 @@
 recently_milked = {
+	icon = 85 # Science flask
 	learning = 1
-	icon = 85
 }
 
 dwcm_milk_capacity_counter = {
-	icon = 83
+	icon = 83 # Test-tubes
 	is_visible = { 
 		character = FROM
 	}
+}
+dcwm_morale_booster = {
+	icon = 13 # Positive military icon
+	land_morale = 0.1
+	land_organisation = 0.25
 }
