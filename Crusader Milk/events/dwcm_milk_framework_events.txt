@@ -103,10 +103,10 @@ character_event = {
   	option = {
         trigger = {
 			OR= {
-				capital_scope = {has_building = dwcm_milkbarn_tr}
-				capital_scope = {has_building = dwcm_milkbarn_ca}
-				capital_scope = {has_building = dwcm_milkbarn_ci}
-				capital_scope = {has_building = dwcm_milkbarn_mr}
+				location = {has_building = dwcm_milkbarn_tr}
+				location = {has_building = dwcm_milkbarn_ca}
+				location = {has_building = dwcm_milkbarn_ci}
+				location = {has_building = dwcm_milkbarn_mr}
 			}
 		}
 		name = "DWCMMilk040B" # Barn - Milk fully!
@@ -115,10 +115,10 @@ character_event = {
   	option = {
         trigger = {
 			OR= {
-				capital_scope = {has_building = dwcm_milkbarn_tr}
-				capital_scope = {has_building = dwcm_milkbarn_ca}
-				capital_scope = {has_building = dwcm_milkbarn_ci}
-				capital_scope = {has_building = dwcm_milkbarn_mr}
+				location = {has_building = dwcm_milkbarn_tr}
+				location = {has_building = dwcm_milkbarn_ca}
+				location = {has_building = dwcm_milkbarn_ci}
+				location = {has_building = dwcm_milkbarn_mr}
 			}
 		}
 		name = "DWCMMilk040C" # Barn - Milk fully and sell!
