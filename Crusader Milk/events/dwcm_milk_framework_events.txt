@@ -150,6 +150,12 @@ character_event = {
 		name = "DWCMMilk050A" # Maybe I should milk myself soon
 		add_trait = engorged_breasts
   	}
+	
+  	option = {
+		name = "DWCMMilk050B" # Why wait I should milk myself now
+		add_trait = engorged_breasts
+		character_event = { id = DWCMMilk.040 }
+  	}
 }
 
 
