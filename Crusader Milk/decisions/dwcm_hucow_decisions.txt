@@ -28,44 +28,6 @@ decisions = {
 	}
 
 
-	# Self milking
-	dwcm_hucow_milking = {
-		ai_check_interval = 1
-
-		potential = {
-			trait = hucow
-			is_female = yes
-			has_character_flag = dwcm_hucow_variables_initialized
-			age = 16
-		}
-
-		allow = {
-			is_incapable = no
-			NOT = { has_character_modifier = recently_milked }
-			check_variable >= { which = dwcm_milk_quantity_CURRENT value = 0.5 }
-		}
-
-		effect = {
-			character_event = { id = DWCMMilk.040 }
-		}
-
-		ai_will_do = {
-			factor = 0.05
-			modifier = { # Those who have engorged breasts are far more likely to milk themselve
-				factor = 5
-				trait = engorged_breasts
-			}
-			modifier = { # Those religious or chaste may be reluctant to milk themselve
-				factor = 0.5
-				trait = chaste
-				trait = celibate
-				trait = nun
-				trait = zealous
-			}
-		}
-	}
-
-
 	# Resume research on Lacteria Mirifica
 	dwcm_resume_lacteria_research = {
 		potential = {
@@ -141,7 +103,7 @@ targetted_decisions = {
 	# Self milking
 	dwcm_hucow_milking = {
 		filter = self
-		ai_check_interval = 6
+		ai_check_interval = 1
 
 		potential = {
 			prisoner = no
