@@ -50,18 +50,18 @@ character_event = {
 	}
 
 	immediate = {
-		character_event = { id = DWCMMilk.030 days = 1 }
-		character_event = { id = DWCMMilk.030 days = 30 }
-		character_event = { id = DWCMMilk.030 days = 60 }
-		character_event = { id = DWCMMilk.030 days = 90 }
-		character_event = { id = DWCMMilk.030 days = 120 }
-		character_event = { id = DWCMMilk.030 days = 150 }
-		character_event = { id = DWCMMilk.030 days = 180 }
-		character_event = { id = DWCMMilk.030 days = 210 }
-		character_event = { id = DWCMMilk.030 days = 240 }
-		character_event = { id = DWCMMilk.030 days = 270 }
-		character_event = { id = DWCMMilk.030 days = 300 }
-		character_event = { id = DWCMMilk.030 days = 330 }
+		character_event = { id = DWCMMilk.030 days = 15 }
+		character_event = { id = DWCMMilk.030 days = 45 }
+		character_event = { id = DWCMMilk.030 days = 75 }
+		character_event = { id = DWCMMilk.030 days = 105 }
+		character_event = { id = DWCMMilk.030 days = 135 }
+		character_event = { id = DWCMMilk.030 days = 165 }
+		character_event = { id = DWCMMilk.030 days = 195 }
+		character_event = { id = DWCMMilk.030 days = 225 }
+		character_event = { id = DWCMMilk.030 days = 255 }
+		character_event = { id = DWCMMilk.030 days = 285 }
+		character_event = { id = DWCMMilk.030 days = 315 }
+		character_event = { id = DWCMMilk.030 days = 345 }
 	}
 }
 
