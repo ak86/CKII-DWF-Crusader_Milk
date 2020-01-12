@@ -6,7 +6,6 @@ dwcm_get_lacteria_test_subject = {
 				is_alive = yes
 				prisoner = no
 				is_incapable = no
-				NOT = { trait = hucow }
 				OR = {
 					has_global_flag = Ala_Body_Mod
 					has_dw_bodytrait_content = yes
@@ -24,7 +23,6 @@ dwcm_get_lacteria_test_subject = {
 					prisoner = no
 					is_incapable = no
 					ai = yes #we don't want the player being pulled into these events against their will
-					NOT = { trait = hucow }
 					OR = {
 						has_global_flag = Ala_Body_Mod
 						has_dw_bodytrait_content = yes
@@ -42,7 +40,6 @@ dwcm_get_lacteria_test_subject = {
 					prisoner = no
 					is_incapable = no
 					ai = yes
-					NOT = { trait = hucow }
 					OR = {
 						has_global_flag = Ala_Body_Mod
 						has_dw_bodytrait_content = yes
@@ -58,17 +55,18 @@ dwcm_become_hucow = { # [Modder_friendly] Make the character a hucow and initial
 	if = {
 		limit = { NOT = { trait = hucow } }
 		add_trait = hucow
-	}
-	hidden_tooltip = {
-		set_variable = { which = dwcm_milk_quantity_CURRENT value = 0 }
-		set_variable = { which = dwcm_tracker_milk_produced value = 0 }
-		set_variable = { which = dwcm_tracker_time_milked value = 0 }
-		dwcm_update_milk_variables = yes
-		add_character_modifier = {
-			name = dwcm_milk_capacity_counter
-			duration = -1
+		hidden_tooltip = {
+			set_variable = { which = dwcm_milk_quantity_CURRENT value = 0 }
+			set_variable = { which = dwcm_tracker_milk_produced value = 0 }
+			set_variable = { which = dwcm_tracker_time_milked value = 0 }
+			dwcm_update_milk_production_MULTIPLIER = yes
+			dwcm_update_milk_variables = yes
+			add_character_modifier = {
+				name = dwcm_milk_capacity_counter
+				duration = -1
+			}
+			set_character_flag = dwcm_hucow_variables_initialized
 		}
-		set_character_flag = dwcm_hucow_variables_initialized
 	}
 }
 
@@ -94,7 +92,6 @@ dwcm_update_milk_variables = { # [Modder_friendly] Update most milk related vari
 	dwcm_update_milk_capacity_TOTAL = yes
 	dwcm_update_milk_capacity_Engorged = yes
 	dwcm_update_milk_production_rate_raw = yes
-	dwcm_update_milk_production_MULTIPLIER = yes
 	dwcm_update_milk_production_rate_TOTAL = yes
 }
 
@@ -163,11 +160,123 @@ dwcm_update_milk_production_MULTIPLIER = { # Milk Production Multiplier (Is used
 	#TODO Add potential multipliers (idea: pregnancy, fuckable nipples from DWF: tentacles, etc...)
 }
 
+dwcm_raise_milk_production_MULTIPLIER_15 = { # Milk Production Multiplier (Is used to alter production rate)
+	multiply_variable = { which = dwcm_milk_production_MULTIPLIER value = 1.15 }
+	#TODO Add potential multipliers (idea: pregnancy, fuckable nipples from DWF: tentacles, etc...)
+}
+
+dwcm_raise_milk_production_MULTIPLIER_10 = { # Milk Production Multiplier (Is used to alter production rate)
+	multiply_variable = { which = dwcm_milk_production_MULTIPLIER value = 1.1 }
+	#TODO Add potential multipliers (idea: pregnancy, fuckable nipples from DWF: tentacles, etc...)
+}
+
+dwcm_raise_milk_production_MULTIPLIER_5 = { # Milk Production Multiplier (Is used to alter production rate)
+	multiply_variable = { which = dwcm_milk_production_MULTIPLIER value = 1.05 }
+	#TODO Add potential multipliers (idea: pregnancy, fuckable nipples from DWF: tentacles, etc...)
+}
+
 dwcm_update_milk_production_rate_TOTAL = { # Actual Production Rate (after multiplier being applied)
 	set_variable = { which = dwcm_milk_production_rate_TOTAL which = dwcm_milk_production_rate_raw }
 	multiply_variable = { which = dwcm_milk_production_rate_TOTAL which = dwcm_milk_production_MULTIPLIER }
+	
+	random = {
+		chance = 10
+		multiply_variable = { which = dwcm_milk_production_rate_TOTAL value = 0.8 }
+	}
+	random = {
+		chance = 20
+		multiply_variable = { which = dwcm_milk_production_rate_TOTAL value = 0.85 }
+	}
+	random = {
+		chance = 30
+		multiply_variable = { which = dwcm_milk_production_rate_TOTAL value = 0.9 }
+	}
+	random = {
+		chance = 40
+		multiply_variable = { which = dwcm_milk_production_rate_TOTAL value = 0.95 }
+	}
+	random = {
+		chance = 40
+		multiply_variable = { which = dwcm_milk_production_rate_TOTAL value = 1.05 }
+	}
+	random = {
+		chance = 30
+		multiply_variable = { which = dwcm_milk_production_rate_TOTAL value = 1.1 }
+	}
+	random = {
+		chance = 20
+		multiply_variable = { which = dwcm_milk_production_rate_TOTAL value = 1.15 }
+	}
+	random = {
+		chance = 10
+		multiply_variable = { which = dwcm_milk_production_rate_TOTAL value = 1.2 }
+	}
 }
 
+dwcm_breast_growth = {
+ 	#DW body
+	if = {
+		limit = { trait = dw_enormous_tits }
+		remove_trait = dw_enormous_tits
+		add_trait = dw_gigantic_tits
+	}
+	else_if = {
+		limit = { trait = dw_huge_tits }
+		remove_trait = dw_huge_tits
+		add_trait = dw_enormous_tits
+	}
+	else_if = {
+		limit = { trait = dw_big_tits }
+		remove_trait = dw_big_tits
+		add_trait = dw_huge_tits
+	}
+	else_if = {
+		limit = { trait = dw_regular_tits }
+		remove_trait = dw_regular_tits
+		add_trait = dw_big_tits
+	}
+	else_if = {
+		limit = { trait = dw_small_tits }
+		remove_trait = dw_small_tits
+		add_trait = dw_regular_tits
+	}
+	else_if = {
+		limit = { trait = dw_tiny_tits }
+		remove_trait = dw_tiny_tits
+		add_trait = dw_small_tits
+	}
+	#ALA body
+	else_if = {
+		limit = { trait = ala_enormous_tits }
+		remove_trait = ala_enormous_tits
+		add_trait = ala_gigantic_tits
+	}
+	else_if = {
+		limit = { trait = ala_huge_tits }
+		remove_trait = ala_huge_tits
+		add_trait = ala_enormous_tits
+	}
+	else_if = {
+		limit = { trait = ala_big_tits }
+		remove_trait = ala_big_tits
+		add_trait = ala_huge_tits
+	}
+	else_if = {
+		limit = { trait = ala_regular_tits }
+		remove_trait = ala_regular_tits
+		add_trait = ala_big_tits
+	}
+	else_if = {
+		limit = { trait = ala_small_tits }
+		remove_trait = ala_small_tits
+		add_trait = ala_regular_tits
+	}
+	else_if = {
+		limit = { trait = ala_tiny_tits }
+		remove_trait = ala_tiny_tits
+		add_trait = ala_small_tits
+	}
+}
 
 #
 # Milking effects

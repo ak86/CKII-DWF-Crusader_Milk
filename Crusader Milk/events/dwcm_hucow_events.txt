@@ -19,7 +19,6 @@ narrative_event = {
 	prisoner = no
 	
  	trigger = {
-		NOT = { trait = hucow }
 		NOT = { has_character_flag = dwcm_lacteria_search_paused_01 }
 		NOT = { has_character_flag = dwcm_lacteria_research_started }
 		NOT = { has_character_flag = dwcm_lacteria_research_aborted }
@@ -108,6 +107,14 @@ narrative_event = {
   	option = {
 	  	name = "DWCMHucow120A" # Well, that was intense
 	  	hidden_tooltip = { narrative_event = { id = DWCMHucow.140 days = 90  random = 30 } }
+		if = {
+			limit = { trait = hucow }
+			hidden_tooltip = { 
+				dwcm_raise_milk_production_MULTIPLIER_5 = yes
+				dwcm_update_milk_production_rate_TOTAL = yes
+				set_variable = { which = dwcm_milk_quantity_CURRENT which = dwcm_milk_capacity_TOTAL }
+			}
+		}
   	}
 }
 
@@ -124,6 +131,14 @@ narrative_event = {
 	option = {
 		name = "DWCMHucow130A" # Takes note on how the subject reacts
 		hidden_tooltip = { narrative_event = { id = DWCMHucow.140 days = 90  random = 30 } }
+		if = {
+			limit = { trait = hucow }
+			hidden_tooltip = { 
+				dwcm_raise_milk_production_MULTIPLIER_5 = yes
+				dwcm_update_milk_production_rate_TOTAL = yes
+				set_variable = { which = dwcm_milk_quantity_CURRENT which = dwcm_milk_capacity_TOTAL }
+			}
+		}
 	}
 }
 
@@ -200,7 +215,6 @@ narrative_event = {
 				is_alive = yes
 				prisoner = no
 				is_incapable = no 
-				NOT = { trait = hucow }
 				OR = {
 					has_global_flag = Ala_Body_Mod
 					has_dw_bodytrait_content = yes
@@ -229,15 +243,8 @@ narrative_event = {
 	option = { 
 	  	name = "DWCMHucow160A"
 		hidden_tooltip = { narrative_event = { id = DWCMHucow.170 days = 14 } }
-		if = { 
-			limit = {
-				# Audax Validator "." Ignore_1007
-				dwf_dicktits_active = yes
-			}
-			# Audax Validator "." Ignore_1007
-			tits_grow = yes
-		}
-  	}
+ 		dwcm_breast_growth = yes
+ 	}
 }
 
 
@@ -264,7 +271,18 @@ narrative_event = {
 
 	option = { 
 	  	name = "DWCMHucow170A"
-		dwcm_become_hucow = yes
+		if = {
+			limit = {
+				NOT = { trait = hucow }
+			}
+			dwcm_become_hucow = yes
+		}
+		hidden_tooltip = { 
+			dwcm_raise_milk_production_MULTIPLIER_10 = yes
+			dwcm_raise_milk_production_MULTIPLIER_10 = yes
+			dwcm_update_milk_production_rate_TOTAL = yes
+			set_variable = { which = dwcm_milk_quantity_CURRENT which = dwcm_milk_capacity_TOTAL }
+		}
 		clr_character_flag = dwcm_lacteria_research_started
 		set_character_flag = dwcm_lacteria_research_completed
   	}
@@ -283,16 +301,9 @@ narrative_event = {
 	option = { 
 	  	name = "DWCMHucow180A"
 		hidden_tooltip = { narrative_event = { id = DWCMHucow.190 days = 14 } }
-		if = { 
-			limit = {
-				# Audax Validator "." Ignore_1007
-				dwf_dicktits_active = yes
-			}
-			event_target:dwcm_lacteria_test_subject = {
-				# Audax Validator "." Ignore_1007
-				tits_grow = yes
-			}
-		}  
+		event_target:dwcm_lacteria_test_subject = {
+			dwcm_breast_growth = yes
+		}
   	}
 }
 
@@ -309,7 +320,18 @@ narrative_event = {
 	option = { 
 	  	name = "DWCMHucow190A"
 	  	event_target:dwcm_lacteria_test_subject = {
-			dwcm_become_hucow = yes
+			if = {
+				limit = {
+					NOT = { trait = hucow }
+				}
+				dwcm_become_hucow = yes
+			}
+			hidden_tooltip = { 
+				dwcm_raise_milk_production_MULTIPLIER_10 = yes
+				dwcm_raise_milk_production_MULTIPLIER_10 = yes
+				dwcm_update_milk_production_rate_TOTAL = yes
+				set_variable = { which = dwcm_milk_quantity_CURRENT which = dwcm_milk_capacity_TOTAL }
+			}
 		}
 	  	clr_character_flag = dwcm_lacteria_research_started
 		set_character_flag = dwcm_lacteria_research_completed
