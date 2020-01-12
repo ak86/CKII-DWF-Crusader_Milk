@@ -44,7 +44,10 @@ decisions = {
 		allow = {
 			prisoner = no
 			is_incapable = no
-			has_valid_alchemist = yes # Calls a scripted_trigger from DW
+			OR = {
+				has_valid_alchemist = yes # Calls a scripted_trigger from DW
+				lf_has_potions = yes # LF
+			}
 		}
 
 		effect = {
